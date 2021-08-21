@@ -1,18 +1,49 @@
-<div class="p-field p-grid">
-    <label for="firstname3" class="p-col-fixed">Firstname</label>
-    <div class="p-col">
-        <input id="firstname3" type="text" pInputText> 
+<div class="p-grid p-jc-center vertical-container">
+    <div class="p-col-6">
+      <p-card>
+        <form name="loginform" 
+        #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm)" novalidate>
+          <h5>Login</h5>
+          <!-- <p>Is "myForm" valid? {{loginForm.valid}}</p>
+          <pre>{{loginForm.value | json}}</pre> -->
+          <div class="p-field p-grid">
+            <label for="firstname3" class="p-col-fixed" style="width:100px"
+              >Firstname</label
+            >
+            <div class="p-col">
+              <input type="text" name="username"
+                pInputText 
+                required
+                [(ngModel)]="loginModel.username"
+                #username="ngModel"  />
+              <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                  class="alert">
+                  <div *ngIf="username.errors?.required">
+                    username is required.
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="p-field p-grid">
+            <label for="lastname3" class="p-col-fixed"  style="width:100px"
+              >Lastname</label
+            >
+            <div class="p-col">
+              <input type="password" 
+              pInputText 
+                name="password"
+                required 
+                [(ngModel)]="loginModel.password"  />
+            </div>
+          </div>
+          <div class="p-field p-grid">
+            <!-- <p-button  type="submit"  [disabled]="!loginForm.valid" type="submit" [loading]="isLoading" label="Login"  ></p-button> -->
+            <p-button  type="submit"  [disabled]="!loginForm.valid" type="submit" [loading]="isLoading" label="Login"  ></p-button>
+          </div>
+        </form>
+       
+      </p-card>
     </div>
-</div>
-<div class="p-field p-grid">
-    <label for="lastname3" class="p-col-fixed" style="width:100px">Lastname</label>
-    <div class="p-col">
-        <input id="lastname3" type="text" pInputText> 
-    </div>
+   
 </div>
 
-<div class="p-grid">
-    <div class="p-col">1</div>
-    <div class="p-col">2</div>
-    <div class="p-col">3</div>
-</div>
