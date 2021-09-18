@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PrimengDesignModule } from './primeng-design/primeng-design.module';
 
 import { AppComponent } from './app.component'; 
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({}),
     PrimengDesignModule,
     BrowserAnimationsModule,
     AppRoutingModule,

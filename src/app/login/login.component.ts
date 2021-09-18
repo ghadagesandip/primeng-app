@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { BehaviorSubject } from "rxjs";
+import { Store } from '@ngrx/store';
+import { Login_Error, Login_Request, Login_Success } from "./login.actions";
 
 export interface ILogin {
     username:string;
@@ -13,14 +16,18 @@ export interface ILogin {
 })
 export class LoginComponent  implements OnInit {
 
-    @ViewChild('loginForm') loginForm: NgForm | undefined;
+    @ViewChild('loginForm')
+    loginForm!: NgForm;
     
-    isLoading:boolean = false;
+    submitted:boolean = false;
+    isloading: boolean = false;
     loginModel:ILogin;
 
-    submitted = false;
-   
-    constructor(){
+    loggedInUser: any;
+
+    constructor(
+        private store: Store<{isloading: boolean, user: null| object }>
+    ){
        this.loginModel = {
            username: '',
            password: ''
@@ -32,8 +39,24 @@ export class LoginComponent  implements OnInit {
     }
 
 
-    onSubmit(formData: any){
-        console.log('this.userModel ', formData.value )
-        this.isLoading = true;
+    onSubmit(){
+        this.submitted = true;
+        if(this.loginForm && this.loginForm.valid ){
+            this.store.dispatch(Login_Request())
+            console.log('this.userModel ', this.loginForm.value )
+           
+            setTimeout(()=>{
+                if(this.loginModel.username == 'sandip' && this.loginModel.password == 'sandip'){
+                    this.store.dispatch(Login_Success())
+                    this.isloading = false;
+                }
+                else{
+                    this.store.dispatch(Login_Error())
+                    this.isloading = false;
+                } 
+            }, 2000)
+            
+        }
+      
     }
 }
