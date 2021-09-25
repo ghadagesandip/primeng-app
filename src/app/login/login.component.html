@@ -39,7 +39,7 @@
                 #password="ngModel" />
               <div *ngIf="password.invalid && (password.dirty || password.touched || submitted)"
                   class="alert">
-                  <div *ngIf="password.errors?.required">
+                  <div class="p-invalid" *ngIf="password.errors?.required">
                     password is required.
                   </div>
               </div>
