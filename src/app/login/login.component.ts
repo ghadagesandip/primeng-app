@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { select, Store } from '@ngrx/store';
 import { Login_Error, Login_Request, Login_Success } from "./login.actions";
 import { getLoginResponse } from "./login.selector";
+import { Router } from "@angular/router";
 
 export interface ILogin {
     username:string;
@@ -27,7 +28,8 @@ export class LoginComponent  implements OnInit {
     loginState$: Observable<any>;
 
     constructor(
-        private store: Store<{isloading: boolean, user: null| object, loginRequestStatus: '' }>
+        private store: Store<{isloading: boolean, user: null| object, loginRequestStatus: '' }>,
+        private router: Router
     ){
        this.loginModel = {
            username: '',
@@ -36,7 +38,9 @@ export class LoginComponent  implements OnInit {
 
        this.loginState$ = this.store.pipe(select(getLoginResponse));
        this.loginState$.subscribe(resp =>{
-           console.log('res', resp)
+           if(resp.loggedIn){
+               this.router.navigate(['dashboard'])
+           }
        })
     }
 
@@ -49,7 +53,6 @@ export class LoginComponent  implements OnInit {
         this.submitted = true;
         if(this.loginForm && this.loginForm.valid ){
             this.store.dispatch(Login_Request({username: this.loginModel.username, password: this.loginModel.password }))
-            console.log('this.userModel ', this.loginForm.value )
            
                 if(this.loginModel.username == 'sandip' && this.loginModel.password == 'sandip'){
                     this.store.dispatch(Login_Success())

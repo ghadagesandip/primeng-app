@@ -7,15 +7,16 @@ import { CheckboxModule } from "primeng/checkbox";
 import { RadioButtonModule } from "primeng/radiobutton";
 import { FormsModule } from "@angular/forms";
 import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 
 const classes = [
-  
   FormsModule,
   CardModule,
   ButtonModule,
   InputTextModule,
   CheckboxModule,
   RadioButtonModule,
+  ChartModule
 ]
 @NgModule({
   declarations: [],

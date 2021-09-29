@@ -1,0 +1,11 @@
+<div>
+    <p>{{chartTitle}}</p>
+    <p>{{currentFilter}}</p>
+    <p-chart 
+    type="bar" 
+    [data]="data"
+    width="100"
+    height="400">
+</p-chart>
+<button type="button" pButton (click)="update($event)">Change</button>
+</div>

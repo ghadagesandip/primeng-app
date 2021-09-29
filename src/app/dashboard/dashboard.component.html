@@ -1,0 +1,8 @@
+<p>dashboard works!</p>
+<ng-container *ngFor="let chartObj of charts">
+    <app-widget4
+        [title]="chartObj.title"
+        [filter]="chartObj.filter">
+    </app-widget4>
+
+</ng-container>
