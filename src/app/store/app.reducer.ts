@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Login_Request, Login_Success, Login_Error } from './login.actions';
+import { Login_Request, Login_Success, Login_Error } from './app.actions';
 
 interface ILoginState {
     loggedIn: boolean;
@@ -13,7 +13,7 @@ export const initialState: ILoginState = {
     loginRequestStatus: ''
 };
  
-const _loginReducer = createReducer(
+const _appReducer = createReducer(
   initialState,
   on(Login_Request, (state, action) => {
     console.log('logi action called', action)
@@ -23,6 +23,6 @@ const _loginReducer = createReducer(
   on(Login_Error, (state) => ({...initialState, loginRequestStatus: 'failed'}))
 );
  
-export function loginReducer(state: ILoginState, action: any) {
-  return _loginReducer(state, action);
+export function AppReducer(state: any, action: any) {
+  return _appReducer(state, action);
 }

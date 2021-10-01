@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { BehaviorSubject, Observable } from "rxjs";
 import { select, Store } from '@ngrx/store';
-import { Login_Error, Login_Request, Login_Success } from "./login.actions";
-import { getLoginResponse } from "./login.selector";
+import { Login_Error, Login_Request, Login_Success } from "../store/app.actions";
+import { getLoginResponse } from "../store/app.selector";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 export interface ILogin {
     username:string;
@@ -25,7 +25,7 @@ export class LoginComponent  implements OnInit {
     isloading: boolean = false;
     loginModel:ILogin;
     loggedInUser: any;
-    loginState$: Observable<any>;
+    appState$: Observable<any>;
 
     constructor(
         private store: Store<{isloading: boolean, user: null| object, loginRequestStatus: '' }>,
@@ -36,8 +36,8 @@ export class LoginComponent  implements OnInit {
            password: ''
        }
 
-       this.loginState$ = this.store.pipe(select(getLoginResponse));
-       this.loginState$.subscribe(resp =>{
+       this.appState$ = this.store.pipe(select(getLoginResponse));
+       this.appState$.subscribe(resp =>{
            if(resp.loggedIn){
                this.router.navigate(['dashboard'])
            }

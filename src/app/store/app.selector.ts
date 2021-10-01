@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-export const getLoginState = createFeatureSelector<any>('loginStore');
+export const getAppState = createFeatureSelector<any>('app');
 
 export const getLoginResponse = createSelector(
-    getLoginState,
+    getAppState,
     (state: any) => state
   );
