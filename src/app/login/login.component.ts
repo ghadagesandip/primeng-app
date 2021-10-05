@@ -38,6 +38,7 @@ export class LoginComponent  implements OnInit {
 
        this.appState$ = this.store.pipe(select(getLoginResponse));
        this.appState$.subscribe(resp =>{
+           console.log('resp', resp)
            if(resp.loggedIn){
                this.router.navigate(['dashboard'])
            }
