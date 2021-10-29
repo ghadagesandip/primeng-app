@@ -25,7 +25,7 @@ export class LoginComponent  implements OnInit {
     isloading: boolean = false;
     loginModel:ILogin;
     loggedInUser: any;
-    appState$: Observable<any>;
+    loginStatus$: Observable<any>;
 
     constructor(
         private store: Store<{isloading: boolean, user: null| object, loginRequestStatus: '' }>,
@@ -36,8 +36,8 @@ export class LoginComponent  implements OnInit {
            password: ''
        }
 
-       this.appState$ = this.store.pipe(select(getLoginResponse));
-       this.appState$.subscribe(resp =>{
+       this.loginStatus$ = this.store.pipe(select(getLoginResponse));
+       this.loginStatus$.subscribe(resp =>{
            console.log('resp', resp)
            if(resp.loggedIn){
                this.router.navigate(['dashboard'])

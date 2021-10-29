@@ -12,6 +12,10 @@ const routes: Routes = [
         component:LoginComponent 
     },
     { 
+        path: 'roles', 
+        loadChildren: () => import('./modules/roles/role.module').then(m => m.RoleModule) 
+    },
+    { 
         path: 'dashboard', 
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) 
     },
