@@ -12,11 +12,11 @@ export class LoginService {
     private http: HttpClient
   ) { }
 
-  postUserLogin(user: any) {
-    return this.http.post(`${environment.appUrl}/auth/login`, user)
+  login(user: any) {
+    return this.http.post(`${environment.appUrl}auth/login`, user)
     .pipe(
       tap((res: any) => {
-       // authentication and local storage code can go here
+     
     })
    );
   }

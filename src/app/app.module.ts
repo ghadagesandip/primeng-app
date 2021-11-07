@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { AppReducer } from './store/app.reducer';
 import { LoginComponent } from './login/login.component';
 import { RoleModule } from './modules/roles/role.module';
+import { LoginEffects } from './store/app.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -24,11 +26,13 @@ import { RoleModule } from './modules/roles/role.module';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({app: AppReducer}),
+    
     PrimengDesignModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     DashboardModule,
+    StoreModule.forRoot({app: AppReducer}),
+    EffectsModule.forRoot([LoginEffects]),
     StoreDevtoolsModule.instrument({
       name: 'NgRx App',
     }),

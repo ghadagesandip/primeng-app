@@ -9,26 +9,26 @@
           <pre>{{loginForm.value | json}}</pre> -->
           <div class="p-field p-grid">
             <label for="firstname3" class="p-col-fixed" style="width:100px"
-              >Firstname</label
+              >Email</label
             >
             <div class="p-col">
               <input type="text" 
-                name="username"
+                name="email"
                 pInputText 
                 required
-                [(ngModel)]="loginModel.username"
-                #username="ngModel"  />
-              <div *ngIf="username.invalid && (username.dirty || username.touched || submitted)"
+                [(ngModel)]="loginModel.email"
+                #email="ngModel"  />
+              <div *ngIf="email.invalid && (email.dirty || email.touched || submitted)"
                 class="alert">
-                <div class="p-invalid" *ngIf="username.errors?.required">
-                  username is required.
+                <div class="p-invalid" *ngIf="email.errors?.required">
+                  email is required.
                 </div>
               </div>
             </div>
           </div>
           <div class="p-field p-grid">
             <label for="lastname3" class="p-col-fixed"  style="width:100px"
-              >Lastname</label
+              >Password</label
             >
             <div class="p-col">
               <input type="password" 

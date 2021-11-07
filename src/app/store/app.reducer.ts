@@ -3,14 +3,14 @@ import { Login_Request, Login_Success, Login_Error } from './app.actions';
 
 interface ILoginState {
     loggedIn: boolean;
-    user: object | null;
-    loginRequestStatus: string;
+    userData: object | null;
+    token: string;
 }
 
 export const initialState: ILoginState = {
     loggedIn: false, 
-    user: null,
-    loginRequestStatus: ''
+    userData: null,
+    token:'',
 };
  
 const _appReducer = createReducer(
@@ -19,7 +19,7 @@ const _appReducer = createReducer(
     console.log('logi action called', action)
     return {...initialState, loginRequestStatus: 'pending'}
   }, ),
-  on(Login_Success, (state) => ({...state,  loggedIn: true, user: {username: 'snadip'}, loginRequestStatus: 'success'})),
+  on(Login_Success, (state, user: any) => ({...state,  loggedIn: true, userData: user.userData, token: user.token})),
   on(Login_Error, (state) => ({...initialState, loginRequestStatus: 'failed'}))
 );
  

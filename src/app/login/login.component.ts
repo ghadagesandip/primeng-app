@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 export interface ILogin {
-    username:string;
+    email:string;
     password:string;
   } 
 
@@ -32,7 +32,7 @@ export class LoginComponent  implements OnInit {
         private router: Router
     ){
        this.loginModel = {
-           username: '',
+           email: '',
            password: ''
        }
 
@@ -53,17 +53,7 @@ export class LoginComponent  implements OnInit {
     onSubmit(){
         this.submitted = true;
         if(this.loginForm && this.loginForm.valid ){
-            this.store.dispatch(Login_Request({username: this.loginModel.username, password: this.loginModel.password }))
-           
-                if(this.loginModel.username == 'sandip' && this.loginModel.password == 'sandip'){
-                    this.store.dispatch(Login_Success())
-                    this.isloading = false;
-                }
-                else{
-                    this.store.dispatch(Login_Error())
-                    this.isloading = false;
-                } 
-            
+            this.store.dispatch(Login_Request({email: this.loginModel.email, password: this.loginModel.password }))
         }
       
     }

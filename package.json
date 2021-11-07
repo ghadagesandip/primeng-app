@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@apollo/client": "^3.4.16",
+    "@ngrx/effects": "^12.5.1",
     "@ngrx/store": "^12.4.0",
     "@ngrx/store-devtools": "^12.4.0",
     "apollo-angular": "^2.6.0",
