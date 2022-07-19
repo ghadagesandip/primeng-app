@@ -29,11 +29,11 @@ phases:
       # name: version
     commands:
       - echo Installing source npm dependencies...
-      - npm install
+      - npm i -g typescript
       - npm install -g @angular/cli
-  #pre_build:
-    #commands:
-      # - command
+  pre_build:
+    commands:
+      - npm install
       # - command
   build:
     commands:
