@@ -26,8 +26,6 @@
     "apollo-angular": "^2.6.0",
     "chart.js": "^2.9.4",
     "graphql": "^15.7.2",
-    "moment": "^2.29.3",
-    "moment-timezone": "^0.5.34",
     "primeflex": "2.0.0",
     "primeicons": "4.0.0",
     "primeng": "^11.3.0",
