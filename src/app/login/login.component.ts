@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
+import { MessageService } from 'primeng/api';
 
 import {
   Login_Error,
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit, OnChanges, DoCheck {
       user: null | object;
       loginRequestStatus: '';
     }>,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.loginModel = {
       email: '',
@@ -55,8 +57,15 @@ export class LoginComponent implements OnInit, OnChanges, DoCheck {
 
     this.loginStatus$ = this.store.pipe(select(getLoginResponse));
     this.loginStatus$.subscribe((resp) => {
+      console.log('resp', resp);
       if (resp.loggedIn) {
         this.router.navigate(['dashboard']);
+      } else if (resp.loginRequestStatus == 'failed') {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error message',
+          detail: 'Invlid login credentials',
+        });
       }
     });
   }
