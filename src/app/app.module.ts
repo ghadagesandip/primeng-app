@@ -22,17 +22,14 @@ import { MessageService } from 'primeng/api';
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
-
     PrimengDesignModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DashboardModule,
     StoreModule.forRoot({ app: AppReducer }),
     EffectsModule.forRoot([LoginEffects]),
     StoreDevtoolsModule.instrument({
       name: 'NgRx App',
     }),
-    RoleModule,
     HttpClientModule,
   ],
   providers: [MessageService],
