@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RoleService } from './../roles/roles.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   charts:any;
-  constructor() {
+  constructor(private roleSerice: RoleService) {
     this.charts = [
       {
         title: 'Activity Report',
@@ -28,5 +28,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add(){
+    this.roleSerice.login({})
+  }
 
 }
